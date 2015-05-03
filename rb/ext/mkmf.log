@@ -1,0 +1,35 @@
+have_func: checking for strlcpy() in string.h... -------------------- yes
+
+"gcc -o conftest -I/Users/darren.ehlers/.rvm/rubies/ruby-2.2.0/include/ruby-2.2.0/x86_64-darwin14 -I/Users/darren.ehlers/.rvm/rubies/ruby-2.2.0/include/ruby-2.2.0/ruby/backward -I/Users/darren.ehlers/.rvm/rubies/ruby-2.2.0/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/readline/include -I/usr/local/opt/libksba/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -fsigned-char -g -O2 -Wall -Werror  conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/openssl/lib -L. -L/Users/darren.ehlers/.rvm/rubies/ruby-2.2.0/lib -L. -fstack-protector -L/usr/local/opt/libyaml/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: int main(int argc, char **argv)
+4: {
+5:   return 0;
+6: }
+/* end */
+
+"gcc -o conftest -I/Users/darren.ehlers/.rvm/rubies/ruby-2.2.0/include/ruby-2.2.0/x86_64-darwin14 -I/Users/darren.ehlers/.rvm/rubies/ruby-2.2.0/include/ruby-2.2.0/ruby/backward -I/Users/darren.ehlers/.rvm/rubies/ruby-2.2.0/include/ruby-2.2.0 -I.  -I/usr/local/opt/libyaml/include -I/usr/local/opt/readline/include -I/usr/local/opt/libksba/include -I/usr/local/opt/openssl/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE -D_DARWIN_UNLIMITED_SELECT -D_REENTRANT   -fsigned-char -g -O2 -Wall -Werror  conftest.c  -L/usr/local/opt/libyaml/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/openssl/lib -L. -L/Users/darren.ehlers/.rvm/rubies/ruby-2.2.0/lib -L. -fstack-protector -L/usr/local/opt/libyaml/lib -L/usr/local/opt/readline/lib -L/usr/local/opt/libksba/lib -L/usr/local/opt/openssl/lib      -lruby.2.2.0  -lpthread -ldl -lobjc "
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <string.h>
+ 4: 
+ 5: /*top*/
+ 6: extern int t(void);
+ 7: int main(int argc, char **argv)
+ 8: {
+ 9:   if (argc > 1000000) {
+10:     printf("%p", &t);
+11:   }
+12: 
+13:   return 0;
+14: }
+15: int t(void) { void ((*volatile p)()); p = (void ((*)()))strlcpy; return 0; }
+/* end */
+
+--------------------
+
